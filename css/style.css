@@ -1557,6 +1557,9 @@ select.form-input {
   opacity: 1;
   transform: translateY(0);
 }
+.mobile-only-menu-btn {
+  display: none;
+}
 
 /* ==========================================================================
    Responsive Styling (Media Queries)
@@ -1597,8 +1600,18 @@ select.form-input {
     margin: 0 auto;
   }
   
+  /* Retain hero graphic and place it centered below the text */
   .hero-graphic {
-    display: none; /* Hide complex graphic on smaller screens */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-top: 2rem;
+  }
+  
+  .court-image-wrapper {
+    max-width: 440px;
+    height: 300px;
   }
   
   .about-grid, .tech-grid, .region-layout, .consult-layout {
@@ -1632,13 +1645,22 @@ select.form-input {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 3rem;
+    gap: 2.5rem;
     transition: var(--transition-smooth);
     z-index: 1050;
+    padding: 2rem;
   }
   
   .nav-menu.active {
     left: 0;
+  }
+  
+  /* Enable Mobile CTA Button in Navigation Menu */
+  .mobile-only-menu-btn {
+    display: block;
+    width: 80%;
+    max-width: 320px;
+    text-align: center;
   }
   
   .hamburger {
@@ -1665,8 +1687,52 @@ select.form-input {
     font-size: 3rem;
   }
   
-  .services-grid, .advocate-grid, .region-selection, .footer-grid {
+  /* Reposition the absolute badge on mobile so it centers nicely and doesn't break boundaries */
+  .glass-floating-badge {
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: -15px;
+    width: 90%;
+    max-width: 320px;
+    padding: 1.2rem;
+    animation: float-badge-mobile 6s infinite alternate ease-in-out;
+  }
+  
+  @keyframes float-badge-mobile {
+    0% { transform: translate(-50%, 0px); }
+    100% { transform: translate(-50%, -10px); }
+  }
+  
+  /* Prevent Accent Frame from sticking off the screen left-edge */
+  .about-image {
+    padding: 0 15px;
+  }
+  
+  .services-grid, .advocate-grid, .footer-grid {
     grid-template-columns: 1fr;
+  }
+  
+  /* Reach Section: Pills remain in 2 Columns instead of 1 Column to save massive vertical space */
+  .region-selection {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.75rem;
+  }
+  
+  .city-pill {
+    padding: 1rem;
+  }
+  
+  .city-pill-name {
+    font-size: 1.1rem;
+  }
+  
+  .city-pill-type {
+    font-size: 0.6rem;
+  }
+  
+  /* Force 16px to prevent iOS Safari auto-zoom on inputs */
+  .form-input, select.form-input, textarea.form-input {
+    font-size: 16px;
   }
   
   .form-grid {
@@ -1693,5 +1759,119 @@ select.form-input {
   
   .branch-name {
     font-size: 1.8rem;
+  }
+  
+  /* Reduce modal padding so it fits narrow screens elegantly */
+  .modal-content {
+    padding: 2.5rem 1.5rem 2rem 1.5rem;
+  }
+  
+  .modal-title {
+    font-size: 1.8rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .section-padding {
+    padding: 4rem 0;
+  }
+  
+  .section-header h2 {
+    font-size: 2rem;
+  }
+  
+  .hero-tagline {
+    font-size: 2.5rem;
+  }
+  
+  /* Convert Stats list to a clean 2x2 grid */
+  .hero-stats {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    padding-top: 2rem;
+  }
+  
+  .stat-number {
+    font-size: 2.2rem;
+  }
+  
+  /* Convert About Features list to a single column */
+  .about-features {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+  
+  .about-img-box {
+    height: 300px;
+  }
+  
+  .advocate-card {
+    padding: 2rem 1.25rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 0 1.25rem;
+  }
+  
+  /* Scaled down Logo components so they never collide with hamburger menu on small phones */
+  .logo-icon {
+    width: 34px;
+    height: 34px;
+    font-size: 1.4rem;
+  }
+  
+  .logo-title {
+    font-size: 1.1rem;
+  }
+  
+  .logo-sub {
+    font-size: 0.5rem;
+    letter-spacing: 0.2em;
+  }
+  
+  /* Hide standard header Contact Us outline button to keep row clean */
+  .header-contact-btn {
+    display: none;
+  }
+  
+  .header-action-button {
+    gap: 0.75rem !important;
+  }
+  
+  /* Reposition floating court badge nicely on tiny screens */
+  .court-image-wrapper {
+    height: 250px;
+  }
+  
+  .glass-floating-badge {
+    bottom: -25px;
+    padding: 0.8rem;
+  }
+  
+  .badge-header {
+    font-size: 1.1rem;
+  }
+  
+  .badge-text {
+    font-size: 0.7rem;
+  }
+  
+  /* Stack Reach branch actions vertically */
+  .branch-actions {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  
+  .branch-actions .btn {
+    width: 100%;
+    padding: 0.75rem 1rem;
+  }
+  
+  /* Stack mockup analytics tags */
+  .mockup-body > div[style*="display: flex"] {
+    flex-direction: column;
+    gap: 0.25rem;
   }
 }
