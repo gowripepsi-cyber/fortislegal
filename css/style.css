@@ -26,7 +26,7 @@
   --font-sans: 'Inter', sans-serif;
   
   /* Layout Dimensions */
-  --header-height: 80px;
+  --header-height: 96px;
   --max-width: 1280px;
   
   /* Shadows & Borders */
@@ -240,7 +240,7 @@ img {
 }
 
 .header.scrolled {
-  height: 70px;
+  height: 68px;
   background-color: rgba(6, 10, 15, 0.85);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
@@ -256,6 +256,23 @@ img {
   max-width: var(--max-width);
   margin: 0 auto;
   padding: 0 2rem;
+}
+/* Custom Transparent Logo Images */
+.logo-img {
+  height: 76px;
+  width: auto;
+  object-fit: contain;
+  transition: var(--transition-smooth);
+}
+
+.header.scrolled .logo-img {
+  height: 45px;
+}
+
+.footer-logo-img {
+  height: 83px;
+  width: auto;
+  object-fit: contain;
 }
 
 /* Luxury Logo Style */
@@ -696,8 +713,8 @@ img {
 }
 
 .advocate-avatar {
-  width: 90px;
-  height: 90px;
+  width: 160px;
+  height: 160px;
   border-radius: 50%;
   margin: 0 auto 1.5rem auto;
   border: 2px solid rgba(212, 175, 55, 0.3);
@@ -707,7 +724,7 @@ img {
   align-items: center;
   justify-content: center;
   font-family: var(--font-serif);
-  font-size: 2rem;
+  font-size: 3.5rem;
   color: hsl(var(--accent-gold));
 }
 
